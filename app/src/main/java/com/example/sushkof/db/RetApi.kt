@@ -3,8 +3,12 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Body
+import retrofit2.http.Header
 
 interface RetApi {
-    @POST
-    fun login(hashMap: HashMap<String, String>): Call<Login>
+    @POST("/auth/login")
+    fun login(@Body hashMap: HashMap<String, String>): Call<Login>
+
+    @GET("user")
+    fun getUser(@Header("Authorization") token: Int): Call<ArrayList<User>>
 }

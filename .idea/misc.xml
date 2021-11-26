@@ -27,6 +27,11 @@
         <entry key="app/src/main/res/drawable/guide_forward_btn.xml" value="0.37447916666666664" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.37447916666666664" />
         <entry key="app/src/main/res/layout/activity_guide.xml" value="0.35833333333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.35833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.35833333333333334" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.35833333333333334" />
       </map>
     </option>
   </component>

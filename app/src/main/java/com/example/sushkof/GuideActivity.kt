@@ -1,5 +1,7 @@
 package com.example.sushkof
 
+import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +39,11 @@ class GuideActivity : AppCompatActivity() {
     }
 
     fun SkipClick(view: android.view.View) {
-        startActivity(Intent(this, MainActivity::class.java))
+        val token = getSharedPreferences("settings", Context.MODE_PRIVATE).getInt("token", 0)
+
+        if (token != 0) startActivity(Intent(this, MainActivity::class.java))
+        else startActivity(Intent(this, SignInActivity::class.java))
+
         finish()
     }
 }

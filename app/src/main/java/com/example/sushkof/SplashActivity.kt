@@ -1,5 +1,6 @@
 package com.example.sushkof
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +16,11 @@ class SplashActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {}
 
             override fun onFinish() {
-                startActivity(Intent(this@SplashActivity, GuideActivity::class.java))
+                val token = getSharedPreferences("settings", Context.MODE_PRIVATE).getInt("token", 0)
+
+                if (token != 0) startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                else startActivity(Intent(this@SplashActivity, GuideActivity::class.java))
+
                 finish()
             }
         }

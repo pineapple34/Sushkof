@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Sushkof</string>
     <string name="skip">Пропустить</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
 </resources>
