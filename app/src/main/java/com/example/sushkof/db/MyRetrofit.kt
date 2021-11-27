@@ -5,11 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MyRetrofit() {
     fun getRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("http://cinema.areas.su/")
+        .baseUrl("http://mskko2021.mad.hakta.pro/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-
-    companion object urls{
-        val imgUrl: String = "http://cinema.areas.su/up/images/"
-    }
 }

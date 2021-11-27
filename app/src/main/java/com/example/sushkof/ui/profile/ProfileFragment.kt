@@ -39,22 +39,11 @@ class ProfileFragment : Fragment() {
         img = root.findViewById(R.id.profile_img)
         name = root.findViewById(R.id.profile_name)
         email = root.findViewById(R.id.profile_email)
-        val token = context?.getSharedPreferences("settings", Context.MODE_PRIVATE)!!.getInt("token", 0)
+        val imgPath = context?.getSharedPreferences("user", Context.MODE_PRIVATE)!!.getString("avatar", null)
 
-        val retrofit = MyRetrofit().getRetrofit().create(RetApi::class.java)
-        val call: Call<ArrayList<User>> = retrofit.getUser(token)
-        call.enqueue(object: Callback<ArrayList<User>>{
-            override fun onResponse(call: Call<ArrayList<User>>, response: Response<ArrayList<User>>) {
-                name.text = response.body()!![0].firstName + response.body()!![0].lastName
-                email.text = response.body()!![0].email
-                Glide.with(context!!).load(MyRetrofit.imgUrl + response.body()!![0].avatar).into(img)
-            }
-
-            override fun onFailure(call: Call<ArrayList<User>>, t: Throwable) {
-                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
-            }
-
-        })
+        name.text = context?.getSharedPreferences("user", Context.MODE_PRIVATE)!!.getString("nickName", null)
+        email.text = context?.getSharedPreferences("user", Context.MODE_PRIVATE)!!.getString("email", null)
+        Glide.with(requireContext()).load(imgPath).into(img)
 
         root.findViewById<Button>(R.id.btn_logout).setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
@@ -70,7 +59,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun logOut(view: View){
-        context?.getSharedPreferences("settings", Context.MODE_PRIVATE)!!.edit().clear().apply()
+        context?.getSharedPreferences("user", Context.MODE_PRIVATE)!!.edit().clear().apply()
         startActivity(Intent(context, SignInActivity::class.java))
 
     }

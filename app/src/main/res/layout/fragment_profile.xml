@@ -8,10 +8,11 @@
 
     <ImageView
         android:id="@+id/profile_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,25 +20,30 @@
         android:id="@+id/profile_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/white"
-        app:layout_constraintVertical_bias="0.3"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_img"
+        android:textSize="23dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profile_img"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_img"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/grey"
-        app:layout_constraintVertical_bias="0.35"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_img"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profile_img"
-        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        app:layout_constraintVertical_bias="0.35" />
 
     <Button
         android:id="@+id/btn_logout"

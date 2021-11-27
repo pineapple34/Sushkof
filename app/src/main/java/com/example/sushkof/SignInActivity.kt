@@ -8,13 +8,12 @@ import android.os.Bundle
 import android.widget.EditText
 import android.util.Patterns
 import android.widget.Toast
-import com.example.sushkof.db.Login
 import com.example.sushkof.db.MyRetrofit
 import com.example.sushkof.db.RetApi
+import com.example.sushkof.db.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 class SignInActivity : AppCompatActivity() {
     lateinit var email: EditText
@@ -35,18 +34,22 @@ class SignInActivity : AppCompatActivity() {
             hashMap["password"] = pass.text.toString()
 
             val retrofit = MyRetrofit().getRetrofit().create(RetApi::class.java)
-            val call: Call<Login> = retrofit.login(hashMap)
-            call.enqueue(object: Callback<Login>{
-                override fun onResponse(call: Call<Login>, response: Response<Login>) {
-                    if (response.body()?.token != null) {
-                        getSharedPreferences("settings", Context.MODE_PRIVATE)
-                            .edit().putInt("token", response.body()!!.token).apply()
+            val call: Call<User> = retrofit.getUser(hashMap)
+            call.enqueue(object: Callback<User>{
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                        getSharedPreferences("user", Context.MODE_PRIVATE).edit()
+                            .putString("id", response.body()?.id)
+                            .putString("email", response.body()?.email)
+                            .putString("nickName", response.body()?.nickName)
+                            .putString("avatar", response.body()?.avatar)
+                            .putString("token", response.body()?.token)
+                            .apply()
+
                         startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                         finish()
-                    }
                 }
 
-                override fun onFailure(call: Call<Login>, t: Throwable) {
+                override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(this@SignInActivity, t.message, Toast.LENGTH_LONG).show()
                 }
 

@@ -39,9 +39,9 @@ class GuideActivity : AppCompatActivity() {
     }
 
     fun SkipClick(view: android.view.View) {
-        val token = getSharedPreferences("settings", Context.MODE_PRIVATE).getInt("token", 0)
+        val token = getSharedPreferences("user", Context.MODE_PRIVATE).getString("token", null)
 
-        if (token != 0) startActivity(Intent(this, MainActivity::class.java))
+        if (token != null) startActivity(Intent(this, MainActivity::class.java))
         else startActivity(Intent(this, SignInActivity::class.java))
 
         finish()

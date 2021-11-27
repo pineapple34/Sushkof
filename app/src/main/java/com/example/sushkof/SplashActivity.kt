@@ -16,9 +16,9 @@ class SplashActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {}
 
             override fun onFinish() {
-                val token = getSharedPreferences("settings", Context.MODE_PRIVATE).getInt("token", 0)
+                val token = getSharedPreferences("user", Context.MODE_PRIVATE).getString("token", null)
 
-                if (token != 0) startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                if (token != null) startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 else startActivity(Intent(this@SplashActivity, GuideActivity::class.java))
 
                 finish()

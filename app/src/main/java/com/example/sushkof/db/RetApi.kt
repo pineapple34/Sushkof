@@ -6,9 +6,9 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 
 interface RetApi {
-    @POST("/auth/login")
-    fun login(@Body hashMap: HashMap<String, String>): Call<Login>
+    @POST("user/login")
+    fun getUser(@Body hashMap: HashMap<String, String>): Call<User>
 
-    @GET("user")
-    fun getUser(@Header("Authorization") token: Int): Call<ArrayList<User>>
+    @GET("quotes")
+    fun getQuotes(): Call<Quotes>
 }
